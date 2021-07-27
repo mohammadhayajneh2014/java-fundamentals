@@ -4,6 +4,11 @@
 package basiclibrary;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
@@ -11,4 +16,48 @@ class AppTest {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+
+    @Test public void testWeatherData(){
+        int[][] weeklyMonthTemperatures = {{5, 6, 7, 8, 10, 11}};
+        //
+        List<String> strArray= null;
+        strArray= Collections.singletonList("Never saw temperature: 9");
+        assertEquals(strArray, App.weatherdata(weeklyMonthTemperatures));
+
+        int[][] weeklyMonthTemperatures2 = {{30, 31, 32, 34, 35, 36, 37}};
+        //
+        List<String> strArray2= null;
+        strArray2= Collections.singletonList("Never saw temperature: 33");
+        assertEquals(strArray2, App.weatherdata(weeklyMonthTemperatures2));
+    }
+    @Test public  void tally(){
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        String topvot ="";
+        topvot="Bush";
+        assertEquals(topvot, App.tally(votes));
+
+        List<String> votes2 = new ArrayList<>();
+        votes2.add("c");
+        votes2.add("c");
+        votes2.add("c");
+        votes2.add("d");
+        votes2.add("d");
+        votes2.add("d");
+        votes2.add("a");
+        votes2.add("d");
+        votes2.add("a");
+        String topvot2 ="";
+        topvot2="d";
+        assertEquals(topvot2, App.tally(votes2));
+    }
+
 }
